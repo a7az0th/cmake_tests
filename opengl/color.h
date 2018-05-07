@@ -27,28 +27,28 @@ struct Color {
 		return *this;
 	}
 
-	Color& Color::operator += (const Color& rhs) {
+	Color& operator += (const Color& rhs) {
 		r += rhs.r;
 		g += rhs.g;
 		b += rhs.b;
 		return *this;
 	}
 
-	Color& Color::operator -= (float scalar) {
+	Color& operator -= (float scalar) {
 		r -= scalar;
 		g -= scalar;
 		b -= scalar;
 		return *this;
 	}
 
-	Color& Color::operator -= (const Color& rhs) {
+	Color& operator -= (const Color& rhs) {
 		r -= rhs.r;
 		g -= rhs.g;
 		b -= rhs.b;
 		return *this;
 	}
 
-	Color& Color::operator /= (float scalar) {
+	Color& operator /= (float scalar) {
 		scalar = 1.0f/scalar;
 		r *= scalar;
 		g *= scalar;
