@@ -7,7 +7,7 @@
 	#ifdef WIN32
 		#include <GL/glut.h>
 	#else
-		#ifdef UNIX
+		#ifdef __linux__
 			#include <GL/gl.h>
 			#include <GL/glut.h>
 		#else
