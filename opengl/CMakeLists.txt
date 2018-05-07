@@ -4,6 +4,8 @@ project (opengl_test)
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 if (WIN32)
+	#Because CMake is dumb, for some reason it will search for glut.lib in GLUT_ROOT_PATH/Release
+	#but by default it is located in GLUT_ROOT_PATH/lib, so make sure to rename the lib folder to Release
 	SET(GLUT_ROOT_PATH "${CUSTOM_FREEGLUT_PATH}")
 endif()
 
