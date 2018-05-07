@@ -2,9 +2,19 @@
 
 #ifdef __APPLE__
 	#include <OpenGL/gl.h>
-	#include <OpenGL/glu.h>
 	#include <GLUT/glut.h>
-#endif
+#else
+	#ifdef WIN32
+		#include <GL/glut.h>
+	#else
+		#ifdef UNIX
+			#include <GL/gl.h>
+			#include <GL/glut.h>
+		#else
+			#error "Unknown platform!"
+	#endif //UNIX
+	#endif //WIN32
+#endif //APPLE
 
 
 

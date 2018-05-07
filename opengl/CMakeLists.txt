@@ -3,11 +3,31 @@ project (opengl_test)
 
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
+if (WIN32)
+	SET(GLUT_ROOT_PATH "${CUSTOM_FREEGLUT_PATH}")
+endif()
+
+MESSAGE(STATUS "GLUT_ROOT_PATH: " ${GLUT_ROOT_PATH})
+
+
 find_package(OpenGL REQUIRED)
 find_package(GLUT REQUIRED)
 
-link_libraries(${OPENGL_LIBRARIES})
-link_libraries(${GLUT_LIBRARIES})
+include_directories(
+	${OPENGL_INCLUDE_DIR}
+	${GLUT_INCLUDE_DIR}
+)
+ 
+link_libraries(
+	${OPENGL_LIBRARIES}
+	${GLUT_LIBRARIES}
+)
 
 add_executable(opengl_test main.cpp)
 
+if (WIN32)
+add_custom_command(TARGET opengl_test POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "${GLUT_ROOT_PATH}/bin/x64/freeglut.dll"
+		$<TARGET_FILE_DIR:opengl_test>)
+endif()
