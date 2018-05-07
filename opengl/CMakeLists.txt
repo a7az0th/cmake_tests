@@ -30,6 +30,6 @@ add_executable(opengl_test main.cpp)
 if (WIN32)
 add_custom_command(TARGET opengl_test POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        "${GLUT_ROOT_PATH}/bin/x64/freeglut.dll"
+        "${GLUT_ROOT_PATH}/bin/freeglut.dll"
 		$<TARGET_FILE_DIR:opengl_test>)
 endif()
